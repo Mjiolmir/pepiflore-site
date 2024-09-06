@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Offres - Pepiflore</title>
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f3e9;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+       nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Left section (Pepiflore logo and text) */
+		.nav-left {
+			display: flex;
+			align-items: center;
+		}
+
+		.nav-left span {
+			font-style: italic;
+			color: #9acd32;
+			font-size: 1.2em;
+			margin-right: 10px;
+		}
+
+		.nav-left img {
+			height: 25px;
+		}
+		
+		/* Center section (Menu buttons) */
+		.nav-center {
+			display: flex;
+			justify-content: center;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			gap: 20px; /* Space between menu items */
+		}
+
+		.nav-center li {
+			display: inline;
+		}
+
+		.nav-center li a {
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+
+		.nav-center li a:hover {
+			background-color: #333;
+			padding: 5px 10px;
+			border-radius: 5px;
+		}
+		
+		/* Right section (Login and Cart icons) */
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.nav-right .icon-btn {
+			padding: 8px;
+			background-color: transparent;
+			border: none;
+		}
+
+
+		.nav-right .icon-btn:hover {
+			background-color: #7aa428; /* Change color on hover */
+		}
+
+
+		.nav-right .nav-icon {
+			width: 32px;
+			height: 32px;
+			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+		}
+
+		.nav-right .icon-btn:hover .nav-icon {
+			transform: scale(1.1);
+		}
+		
+		.nav-right img {
+			height: 25px; /* Pepiflore logo size */
+		}
+
+		.nav-right span {
+			margin-left: 10px; /* Space between Pepiflore text and logo */
+		}
+		
+        .hero {
+            background-image: url('Image1.png');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .intro-text {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #eaf2e3;
+        }
+
+        .intro-text h2 {
+            font-size: 2.5em;
+            color: #005f20;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            font-size: 1.2em;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .offers-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .offers-section h2 {
+            font-size: 2.5em;
+            color: #005f20;
+            margin-bottom: 30px;
+        }
+
+        .offer-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .offer-card {
+            position: relative;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            width: 300px;
+            max-width: 90%;
+            transition: transform 0.3s ease;
+            border: 2px solid #eaf2e3;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .offer-card h3 {
+            font-size: 1.8em;
+            color: #005f20;
+            margin-bottom: 15px;
+        }
+
+        .offer-card p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        .details-link {
+            display: block;
+            font-style: italic;
+            color: #7aa428;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .details-link:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .subscribe-button {
+            background-color: #9acd32;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .subscribe-button:hover {
+            background-color: #7aa428;
+        }
+
+        footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+		 footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer div {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        footer h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        footer p, footer a {
+            font-size: 1em;
+            color: #ddd;
+            margin: 5px 0;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #ddd;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .contact-info, .services-list {
+            margin-top: 10px;
+        }
+
+        .contact-info i, .services-list i {
+            margin-right: 10px;
+            color: #9acd32;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .footer-content div {
+            text-align: left;
+            margin: 0 20px;
+        }
+		
+    </style>
+</head>
+<body>
+
+<nav>
+    <!-- Pepiflore logo and text on the left -->
+    <div class="nav-left">
+       <a href="accueil.html" style="text-decoration: none;">
+            <span style="font-style: italic; color: #9acd32; font-size: 1.2em;">Pepiflore</span>
+            <img src="logo_pepiflore.png" alt="Logo Pepiflore" style="height: 25px;">
+        </a>
+    </div>
+
+    <!-- Menu buttons in the center -->
+    <ul class="nav-center">
+        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="offre.html">Location</a></li>
+        <li><a href="ventes.html">Ventes</a></li>
+        <li><a href="initiatives.html">Nos Initiatives</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Login and Cart buttons on the right -->
+    <div class="nav-right">
+        <a href="login.html" class="icon-btn">
+            <img src="login.png" alt="Compte" class="nav-icon">
+        </a>
+
+        <a href="cart.html" class="icon-btn">
+            <img src="panier.png" alt="Panier" class="nav-icon">
+        </a>
+    </div>
+</nav>
+
+<!-- Hero Section with Image -->
+<div class="hero">
+    <!-- Contenu vide pour ne montrer que l'image -->
+</div>
+
+<!-- Introduction Text -->
+<section class="intro-text">
+    <h2>Culture Biologique et Respectueuse</h2>
+    <p>
+        Chez Pepiflore, nous nous engageons à cultiver la nature avec bienveillance et respect. Toutes nos parcelles sont entretenues de manière biologique, sans l'utilisation de produits chimiques, garantissant un environnement sain et propice à la culture. De plus, nos parcelles sont accessibles <strong>24h/24</strong> et <strong>7j/7</strong>, vous permettant de cultiver à votre rythme, avec <strong>prêt d'outils nécessaires</strong> et un accès à des <strong>chariots de transports</strong>. Nous veillons également à la propreté et à l'entretien de nos allées et de notre propriété. La mise en place de composts et d'engrais d'origine naturelle vous permet de cultiver vos plantes en toute confiance. 
+        Nous restons à votre disposition si vous souhaitez vous initiez à notre méthode de permaculture. 
+    </p>
+</section>
+
+<!-- Section Offres -->
+<section class="offers-section">
+    <h2>Découvrez nos offres adaptées à vos besoins</h2>
+    <div class="offer-cards">
+        <div class="offer-card">
+            <h3>Offre Essentielle</h3>
+            <p>Surface : 100 m² de terrain</p>
+            <p>Service inclus : Arrosage</p>
+            <p><strong>14,99 € /mois</strong></p>
+            <a href="javascript:void(0)" class="details-link">plus de détails</a>
+            <a href="souscription.html" class="subscribe-button">Souscrire</a>
+        </div>
+        <div class="offer-card">
+            <h3>Offre Premium</h3>
+            <p>Surface : 100 m² de terrain</p>
+            <p>Services inclus :</p>
+            <ul>
+                <li>Arrosage</li>
+                <li>Entretien terrain</li>
+                <li>Ramassage des feuilles, fruits et légumes</li>
+            </ul>
+            <p><strong>24,99 € /mois</strong></p>
+            <a href="javascript:void(0)" class="details-link">plus de détails</a>
+            <a href="souscription.html" class="subscribe-button">Souscrire</a>
+        </div>
+        <div class="offer-card">
+            <h3>Supplément Camera</h3>
+            <p>Surveillance 24h/24</p>
+            <p>Application qui vous permet de suivre en direct l'évolution de votre parcelle</p>
+            <p><strong>+ 4€ /mois</strong></p>
+          <a href="javascript:void(0)" class="details-link">plus de détails</a>
+            <a href="souscription.html" class="subscribe-button">Souscrire</a>
+        </div>
+    </div>
+    <div class="offer-cards">
+        <div class="offer-card" style="margin-right: 0;">
+            <h3>Formation Jardinage</h3>
+            <p>Mercredi, Samedi, Dimanche</p>
+            <p><strong>19,99€/personne</strong></p>
+            <a href="javascript:void(0)" class="details-link">plus de détails</a>
+            <a href="souscription.html" class="subscribe-button">Souscrire</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-content">
+		<div>
+			<h4>Pepiflore</h4>
+			<p><i class="fas fa-map-marker-alt"></i> 123 Chemin d'Encazaux, 32600 L'Isle-Jourdain, France</p>
+		</div>
+		<div class="contact-info">
+			<h4>Contact</h4>
+			<p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+			<p><i class="fas fa-envelope"></i> contact@pepiflore.fr</p>
+		</div>
+        <div class="services-list">
+           	<h4>Nos Services</h4>
+			<p> Location de Parcelles</p>
+			<p> Production bio</p>
+			<p> Ventes de nos cultures</p>
+			<p> Engagement associatif</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

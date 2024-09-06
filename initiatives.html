@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Pepiflore - Nos Initiatives</title>
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f3e9;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+       nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+         /* Left section (Pepiflore logo and text) */
+		.nav-left {
+			display: flex;
+			align-items: center;
+		}
+
+		.nav-left span {
+			font-style: italic;
+			color: #9acd32;
+			font-size: 1.2em;
+			margin-right: 10px;
+		}
+
+		.nav-left img {
+			height: 25px;
+		}
+		
+		/* Center section (Menu buttons) */
+		.nav-center {
+			display: flex;
+			justify-content: center;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			gap: 20px; /* Space between menu items */
+		}
+
+		.nav-center li {
+			display: inline;
+		}
+
+		.nav-center li a {
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+
+		.nav-center li a:hover {
+			background-color: #333;
+			padding: 5px 10px;
+			border-radius: 5px;
+		}
+		
+		/* Right section (Login and Cart icons) */
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.nav-right .icon-btn {
+			padding: 8px;
+			background-color: transparent;
+			border: none;
+		}
+
+
+		.nav-right .icon-btn:hover {
+			background-color: #7aa428; /* Change color on hover */
+		}
+
+
+		.nav-right .nav-icon {
+			width: 32px;
+			height: 32px;
+			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+		}
+
+		.nav-right .icon-btn:hover .nav-icon {
+			transform: scale(1.1);
+		}
+		
+		.nav-right img {
+			height: 25px; /* Pepiflore logo size */
+		}
+
+		.nav-right span {
+			margin-left: 10px; /* Space between Pepiflore text and logo */
+		}
+
+        /* Hero section with full-width image */
+       .hero {
+            background-image: url('initiatives.png');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .initiatives-section {
+            padding: 80px 20px;
+            background-color: #eaf2e3;
+            text-align: center;
+        }
+
+        .initiatives-section h2 {
+            font-size: 2.5em;
+            color: #005f20;
+            margin-bottom: 30px;
+        }
+
+        .initiatives-section p {
+            font-size: 1.2em;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+        }
+
+        .initiative-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .initiative-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            min-width: 280px;
+            transition: transform 0.3s ease;
+        }
+
+		.initiative-card img {
+			max-width: 100%;
+			height: 350px; /* Adjust the height to enlarge */
+			border-radius: 10px;
+			margin-bottom: 15px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+        .initiative-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .initiative-card h3 {
+            font-size: 1.8em;
+            color: #005f20;
+            margin-bottom: 15px;
+        }
+
+        .initiative-card p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+
+        footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer div {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        footer h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        footer p, footer a {
+            font-size: 1em;
+            color: #ddd;
+            margin: 5px 0;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #ddd;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .contact-info, .services-list {
+            margin-top: 10px;
+        }
+
+        .contact-info i, .services-list i {
+            margin-right: 10px;
+            color: #9acd32;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .footer-content div {
+            text-align: left;
+            margin: 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <!-- Pepiflore logo and text on the left -->
+    <div class="nav-left">
+        <a href="accueil.html" style="text-decoration: none;">
+            <span style="font-style: italic; color: #9acd32; font-size: 1.2em;">Pepiflore</span>
+            <img src="logo_pepiflore.png" alt="Logo Pepiflore" style="height: 25px;">
+        </a>
+    </div>
+
+    <!-- Menu buttons in the center -->
+    <ul class="nav-center">
+        <li><a href="accueil.html">Accueil</a></li>
+        <li><a href="offre.html">Location</a></li>
+        <li><a href="ventes.html">Ventes</a></li>
+        <li><a href="initiatives.html">Nos Initiatives</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- Login and Cart buttons on the right -->
+    <div class="nav-right">
+        <a href="login.html" class="icon-btn">
+            <img src="login.png" alt="Compte" class="nav-icon">
+        </a>
+
+        <a href="cart.html" class="icon-btn">
+            <img src="panier.png" alt="Panier" class="nav-icon">
+        </a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+    <!-- Contenu vide pour afficher uniquement l'image de fond -->
+</div>
+
+<!-- Section Nos Initiatives -->
+<section class="initiatives-section">
+    <h2>Nos Initiatives</h2>
+    <p>Chez Pepiflore, nous croyons en notre responsabilité sociale et environnementale. Nos initiatives visent à soutenir la communauté et à promouvoir des pratiques agricoles durables et responsables.</p>
+    
+    <div class="initiative-cards">
+        <div class="initiative-card">
+            <img src="don_fruits.png" alt="Dons de Fruits et Légumes">
+            <h3>Dons de Fruits et Légumes</h3>
+            <p>Nous faisons don des excédents de fruits et légumes, à des associations caritatives locales pour lutter contre le gaspillage alimentaire.</p>
+        </div>
+        <div class="initiative-card">
+            <img src="partenariats_avec_les_ecoles.png" alt="Partenariats avec les Écoles">
+            <h3>Partenariats avec les Écoles</h3>
+            <p>Nous collaborons avec les écoles locales pour organiser des visites et ateliers éducatifs, permettant aux jeunes de découvrir les bases de l'agriculture et l'importance de l'écologie.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <div class="footer-content">
+        <div>
+			<h4>Pepiflore</h4>
+			<p><i class="fas fa-map-marker-alt"></i> 123 Chemin d'Encazaux, 32600 L'Isle-Jourdain, France</p>
+		</div>
+		<div class="contact-info">
+			<h4>Contact</h4>
+			<p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+			<p><i class="fas fa-envelope"></i> contact@pepiflore.fr</p>
+		</div>
+        <div class="services-list">
+           	<h4>Nos Services</h4>
+			<p> Location de Parcelles</p>
+			<p> Production bio</p>
+			<p> Ventes de nos cultures</p>
+			<p> Engagement associatif</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

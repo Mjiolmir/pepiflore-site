@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Panier</title>
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f3e9;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation bar (ruban) */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-left span {
+            font-style: italic;
+            color: #9acd32;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .nav-left img {
+            height: 25px;
+        }
+
+        .nav-center {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav-center li {
+            display: inline;
+        }
+
+        .nav-center li a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Right section (Login and Cart icons) */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-right .icon-btn {
+            padding: 8px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .nav-right .icon-btn:hover {
+            background-color: #7aa428;
+        }
+
+        .nav-right .nav-icon {
+            width: 32px;
+            height: 32px;
+            filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+        }
+
+        .nav-right .icon-btn:hover .nav-icon {
+            transform: scale(1.1);
+        }
+
+        .nav-right img {
+            height: 25px;
+        }
+
+        .nav-right span {
+            margin-left: 10px;
+        }
+
+        /* Shopping Cart Section */
+        .cart-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #005f20;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #9acd32;
+            color: white;
+        }
+
+        td input[type="number"] {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .cart-actions {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .cart-actions button {
+            background-color: #9acd32;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .cart-actions button:hover {
+            background-color: #7aa428;
+        }
+
+        .total {
+            font-size: 1.8em;
+            text-align: right;
+            margin-top: 20px;
+            color: #005f20;
+        }
+        
+        .contact-info, .services-list {
+            margin-top: 10px;
+        }
+
+        .contact-info i, .services-list i {
+            margin-right: 10px;
+            color: #9acd32;
+        }
+
+        /* Footer content */
+        footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+      footer {
+            background-color: #444;
+            color: white;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer div {
+            flex: 1;
+            min-width: 250px;
+            padding: 10px;
+            text-align: left;
+        }
+
+        footer h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+        }
+
+        footer p, footer a {
+            font-size: 1em;
+            color: #ddd;
+            margin: 5px 0;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #ddd;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+
+        .footer-content div {
+            text-align: left;
+            margin: 0 20px;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <nav>
+        <!-- Pepiflore logo and text on the left -->
+        <div class="nav-left">
+            <a href="accueil.html" style="text-decoration: none;">
+				<span style="font-style: italic; color: #9acd32; font-size: 1.2em;">Pepiflore</span>
+				<img src="logo_pepiflore.png" alt="Logo Pepiflore" style="height: 25px;">
+			</a>
+        </div>
+
+        <!-- Menu buttons in the center -->
+        <ul class="nav-center">
+            <li><a href="accueil.html">Accueil</a></li>
+            <li><a href="offre.html">Location</a></li>
+            <li><a href="ventes.html">Ventes</a></li>
+            <li><a href="initiatives.html">Nos Initiatives</a></li>
+            <!-- Contact button now links to the footer -->
+            <li><a href="#contact-footer">Contact</a></li>
+        </ul>
+
+        <!-- Login and Cart buttons on the right -->
+        <div class="nav-right">
+            <a href="login.html" class="icon-btn">
+                <img src="login.png" alt="Compte" class="nav-icon">
+            </a>
+
+            <a href="cart.html" class="icon-btn">
+                <img src="panier.png" alt="Panier" class="nav-icon">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Shopping Cart -->
+    <div class="cart-container">
+        <h2>Votre Panier</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Sous-total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Arbuste</td>
+                    <td>10 €</td>
+                    <td><input type="number" value="1" min="1"></td>
+                    <td>10 €</td>
+                    <td><button>Supprimer</button></td>
+                </tr>
+                <tr>
+                    <td>Fleur Colorée</td>
+                    <td>10 €</td>
+                    <td><input type="number" value="3" min="1"></td>
+                    <td>30 €</td>
+                    <td><button>Supprimer</button></td>
+                </tr>
+                <!-- Add more products here if needed -->
+            </tbody>
+        </table>
+
+        <!-- Total price -->
+        <div class="total">
+            Total : 40 €
+        </div>
+
+        <!-- Cart actions -->
+        <div class="cart-actions">
+            <button onclick="window.location.href='ventes.html'">Continuer vos achats</button>
+            <button onclick="window.location.href='souscription.html'">Payer maintenant</button>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer id="contact">
+		<div class="footer-content">
+			<div>
+				<h4>Pepiflore</h4>
+				<p><i class="fas fa-map-marker-alt"></i> 123 Chemin d'Encazaux, 32600 L'Isle-Jourdain, France</p>
+			</div>
+			<div class="contact-info">
+				<h4>Contact</h4>
+				<p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p>
+				<p><i class="fas fa-envelope"></i> contact@pepiflore.fr</p>
+			</div>
+			<div class="services-list">
+				<h4>Nos Services</h4>
+				<p> Location de Parcelles</p>
+				<p> Production bio</p>
+				<p> Ventes de nos cultures</p>
+				<p> Engagement associatif</p>
+			</div>
+		</div>
+	</footer>
+
+</body>
+
+</html>

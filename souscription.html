@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Souscription</title>
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f3e9;
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+       nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            background-color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        /* Left section (Pepiflore logo and text) */
+		.nav-left {
+			display: flex;
+			align-items: center;
+		}
+
+		.nav-left span {
+			font-style: italic;
+			color: #9acd32;
+			font-size: 1.2em;
+			margin-right: 10px;
+		}
+
+		.nav-left img {
+			height: 25px;
+		}
+		
+		/* Center section (Menu buttons) */
+		.nav-center {
+			display: flex;
+			justify-content: center;
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			gap: 20px; /* Space between menu items */
+		}
+
+		.nav-center li {
+			display: inline;
+		}
+
+		.nav-center li a {
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 1.2em;
+		}
+
+		.nav-center li a:hover {
+			background-color: #333;
+			padding: 5px 10px;
+			border-radius: 5px;
+		}
+		
+		/* Right section (Login and Cart icons) */
+		.nav-right {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.nav-right .icon-btn {
+			padding: 8px;
+			background-color: transparent;
+			border: none;
+		}
+
+
+		.nav-right .icon-btn:hover {
+			background-color: #7aa428; /* Change color on hover */
+		}
+
+
+		.nav-right .nav-icon {
+			width: 32px;
+			height: 32px;
+			filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
+		}
+
+		.nav-right .icon-btn:hover .nav-icon {
+			transform: scale(1.1);
+		}
+		
+		.nav-right img {
+			height: 25px; /* Pepiflore logo size */
+		}
+
+		.nav-right span {
+			margin-left: 10px; /* Space between Pepiflore text and logo */
+		}
+
+		/* Container for centering the form */
+		.form-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 100vh;
+		}
+
+		/* Adjust the position of the form */
+		.subscription-form {
+			background-color: #ffffff;
+			padding: 30px 50px;
+			border-radius: 10px;
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+			width: 450px;
+			margin: -110px 0 20px 0; /* Move the form up by 150px */
+			animation: fadeIn 1s ease;
+}
+
+
+
+        .subscription-form h2 {
+            text-align: center;
+            color: #005f20;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            animation: slideInFromLeft 0.5s ease;
+        }
+
+        .subscription-form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .subscription-form input[type="text"],
+        .subscription-form input[type="email"],
+        .subscription-form input[type="tel"],
+        .subscription-form input[type="date"],
+        .subscription-form input[type="file"],
+        .subscription-form input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .subscription-form input:focus {
+            border-color: #9acd32;
+            outline: none;
+        }
+
+        .file-upload {
+            padding: 20px;
+            text-align: center;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            background-color: #f7f7f7;
+            transition: border-color 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #005f20;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .subscription-form button {
+            background-color: #9acd32;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 20px;
+        }
+
+        .subscription-form button:hover {
+            background-color: #7aa428;
+            transform: translateY(-2px);
+        }
+
+        .subscription-form button:active {
+            transform: translateY(0);
+        }
+
+        .card-details {
+            margin-bottom: 20px;
+        }
+
+        .card-details label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-details input[type="text"],
+        .card-details input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .card-details input:focus {
+            border-color: #9acd32;
+            outline: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+		<!-- Pepiflore logo and text on the left -->
+		<div class="nav-left">
+			<span>Pepiflore</span>
+			<img src="logo_pepiflore.png" alt="Logo Pepiflore">
+		</div>
+
+		<!-- Menu buttons in the center -->
+		<ul class="nav-center">
+			<li><a href="accueil.html">Accueil</a></li>
+			<li><a href="offre.html">Location</a></li>
+			<li><a href="ventes.html">Ventes</a></li>
+			<li><a href="initiatives.html">Nos Initiatives</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+
+		<!-- Login and Cart buttons on the right -->
+		<div class="nav-right">
+			<a href="login.html" class="icon-btn">
+				<img src="login.png" alt="Compte" class="nav-icon">
+			</a>
+
+			<a href="cart.html" class="icon-btn">
+				<img src="panier.png" alt="Panier" class="nav-icon">
+			</a>
+		</div>
+	</nav>
+	<div class="form-container">
+		<div class="subscription-form">
+			<h2>Souscription à un Service</h2>
+			<form>
+				<label for="first-name"><i class="fas fa-user"></i> Prénom</label>
+				<input type="text" id="first-name" name="first-name" required>
+
+				<label for="last-name"><i class="fas fa-user"></i> Nom</label>
+				<input type="text" id="last-name" name="last-name" required>
+
+				<label for="birth-date"><i class="fas fa-calendar"></i> Date de naissance</label>
+				<input type="date" id="birth-date" name="birth-date" required>
+
+				<label for="address"><i class="fas fa-home"></i> Adresse</label>
+				<input type="text" id="address" name="address" required>
+
+				<label for="email"><i class="fas fa-envelope"></i> Email</label>
+				<input type="email" id="email" name="email" required>
+
+				<label for="phone"><i class="fas fa-phone"></i> Numéro de téléphone</label>
+				<input type="tel" id="phone" name="phone" required>
+
+				<label for="file-upload" class="file-upload">
+					<i class="fas fa-upload"></i> Cliquez ici pour déposer vos fichiers associés
+					<input type="file" id="file-upload" name="file-upload" multiple>
+				</label>
+
+				<div class="card-details">
+					<label for="card-number"><i class="fas fa-credit-card"></i> Numéro de carte bancaire</label>
+					<input type="number" id="card-number" name="card-number" required>
+
+					<label for="expiry-date"><i class="fas fa-calendar-alt"></i> Date d'expiration (MM/AA)</label>
+					<input type="text" id="expiry-date" name="expiry-date" placeholder="MM/AA" required>
+
+					<label for="cvc"><i class="fas fa-lock"></i> CVC</label>
+					<input type="number" id="cvc" name="cvc" required>
+				</div>
+
+				<button type="submit">Souscrire</button>
+			</form>
+		</div>
+	</div>
+
+</body>
+
+</html>
